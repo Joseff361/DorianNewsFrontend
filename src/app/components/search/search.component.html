@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row" >
+        <div class="col-md-11 mx-auto mt-5 mockup">
+           
+           <!-- PRESENTATION -->
+            <div class="row">
+               <div class="col-md-7 mockup">
+                   <img src="assets/images/news.jpeg" alt="">
+               </div>
+               <div class="col-md-5 mockup mx-auto mt-4 text-center">
+                   <p class="display-3">Stay with news</p>
+                   <p>The most centralized web page for news</p>
+               </div>
+           </div>
+
+           <!-- SEARCH -->
+           <div class="row text-center mt-5">
+               <div class="col-md-4 mockup my-3">
+                   <select class="form-control form-select-sm" (change)="countrySelected($event.target.value)">
+                        <option value="none">Search by country</option>
+                        <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option> 
+                   </select>
+               </div>
+
+                <div class="col-md-4 mockup my-3">
+                    <select class="form-control form-select-sm" (change)="categorySelected($event.target.value)">
+                        <option value="none">Search by category</option>
+                        <option *ngFor="let category of categories" [value]="category">{{category}}</option> 
+                    </select>
+                </div>
+                <div class="col-md-4 mockup mt-3">
+                    <input #box (keyup.enter)="keywordTyped(box.value)"
+                        type="text" class="form-control" placeholder="Search by keyword...">
+                </div>
+           </div>
+
+
+           <!-- RESULT LIST-->
+            <app-results [country]="c_country" [category]="c_category" [keyword]="t_keyword"></app-results>
+
+        </div>
+    </div>
+</div>

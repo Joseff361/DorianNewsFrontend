@@ -1,0 +1,33 @@
+<div class="row" *ngIf="visible">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+</div>
+
+
+
+
+<div class="row" *ngIf="resultList && !visible">
+    <div class="col-md-12 my-3">Resultados totales: {{resultList.totalResults}}</div>
+    <hr>
+    <div class="col-md-4" *ngFor="let new of resultList.articles">
+        <div class="card mt-3">
+            <div class="card-header ">{{new.source.name}}</div>
+            <img *ngIf="new.urlToImage" height="175" [src]="new.urlToImage" alt="News image" >
+            <img *ngIf="!new.urlToImage" height="175" src="../../../assets/images/404.png" alt="News image" >
+            <div class="card-body">
+              <p class="card-title truncate-title">{{new.title}}</p>
+              <p *ngIf="new.description" class="card-text truncate-content">{{new.description}}</p>
+              <p *ngIf="!new.description" class="card-text truncate-content">{{new.title}}</p>
+              <a [href]="new.url" target="_blank" class="btn btn-white">Read new</a> &nbsp;
+              <a href="#" target="_blank" class="btn btn-danger">Save new</a>
+            </div>
+            <div class="card-footer">
+                <div class="row text-center">
+                    <div class="col-md-12"><small class="text-muted">{{new.publishedAt | date}}</small></div>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
