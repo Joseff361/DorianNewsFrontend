@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="col-md-11 mx-auto mt-5 mb-4"> 
+    
+    <div class="row" *ngIf="visible">
+        <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+    </div>
+
+
+    <div class="row" *ngIf="resultList && !visible">
+        <div class="col-md-4" *ngFor="let new of resultList">
+            <div class="card mt-3 ">
+                <div class="card-header ">{{new.sourceName}}</div>
+                <img *ngIf="new.urlToImage" height="175" [src]="new.urlToImage" alt="News image" >
+                <img *ngIf="!new.urlToImage" height="175" src="../../../assets/images/404.png" alt="News image" >
+                <div class="card-body">
+                  <p class="card-title truncate-title">{{new.title}}</p>
+                  <p *ngIf="new.description" class="card-text truncate-content">{{new.description}}</p>
+                  <p *ngIf="!new.description" class="card-text truncate-content">{{new.title}}</p>
+                  <a  class="btn btn-danger mt-2" (click)="delete($event.target.value, new.id)" >Delete new</a>
+                </div>
+                <div class="card-footer">
+                    <div class="row text-center">
+                        <div class="col-md-12"><small class="text-muted">{{new.publishedAt | date}}</small></div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>  
+    </div>  
+</div>

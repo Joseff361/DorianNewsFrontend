@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg sytle navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand sytle" ><i class="fa fa-newspaper-o" aria-hidden="true"></i>
-        DorianNews</a>
+      <a routerLink='/home' routerLinkActive="active" class="navbar-brand sytle" >
+        <i class="fa fa-newspaper-o" aria-hidden="true"></i>DorianNews</a>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,15 +10,26 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"></a>
+            <a href="https://newsapi.org/" target="_blank" class="nav-link sytle active"><small class="fa fa-book" aria-hidden="true"></small> API reference</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/Joseff361?tab=repositories" target="_blank" class="nav-link active"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
           </li>
         </ul>
       </div>
 
       <form class="form-inline">
-        <a href="https://newsapi.org/" target="_blank" class="sytle"><i class="fa fa-book" aria-hidden="true"></i> API reference</a>
-        &nbsp; &nbsp;  
-        <a href="https://github.com/Joseff361?tab=repositories" target="_blank" class="sytle"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+        <a [style.display]="v_signup" routerLink='/signup' routerLinkActive="active" class="nav-link active" aria-current="page">
+          <i class="fa fa-sign-in" aria-hidden="true"></i> Sign Up</a>
+
+        <a [style.display]="v_login" routerLink='/login' routerLinkActive="active" class="nav-link active" aria-current="page">
+          <i class="fa fa-user" aria-hidden="true"></i> Log in</a>
+        
+          <a [style.display]="v_user" routerLink='/saved' routerLinkActive="active" class="nav-link active" aria-current="page">
+            <i class="fa fa-user" aria-hidden="true"></i> {{customerName}}</a>
+
+        <a [style.display]="v_logout"  routerLink='/home' (click)="logOut($event)" routerLinkActive="active" class="nav-link active" aria-current="page">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
       </form>
 
     </div>

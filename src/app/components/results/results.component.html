@@ -20,8 +20,8 @@
               <p class="card-title truncate-title">{{new.title}}</p>
               <p *ngIf="new.description" class="card-text truncate-content">{{new.description}}</p>
               <p *ngIf="!new.description" class="card-text truncate-content">{{new.title}}</p>
-              <a [href]="new.url" target="_blank" class="btn btn-white">Read new</a> &nbsp;
-              <a href="#" target="_blank" class="btn btn-danger">Save new</a>
+              <a [href]="new.url" target="_blank" class="btn btn-white mt-2">Read new</a> &nbsp;
+              <a  class="btn btn-danger mt-2" (click)="saveNew($event.target.value, new)">Save new</a>
             </div>
             <div class="card-footer">
                 <div class="row text-center">

@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto mt-5">
+            <div class="card">
+                <div class="card-header text-center"><h4>Sign Up</h4></div>
+                <div class="card-body">
+                    <form novalidate [formGroup]="signupForm" #ffform="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label class="form-label">Customer Name</label>
+                            <input  formControlName="customerName" type="text" class="form-control" required>
+                            <div *ngIf="formErrors.customerName" class="alert alert-danger mt-2" role="alert">
+                                {{formErrors.customerName}}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Name</label>
+                            <input  formControlName="name" type="text" class="form-control" required>
+                            <div *ngIf="formErrors.name" class="alert alert-danger mt-2" role="alert">
+                                {{formErrors.name}}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Last name</label>
+                            <input  formControlName="lastName" type="text" class="form-control" required>
+                            <div *ngIf="formErrors.lastName" class="alert alert-danger mt-2" role="alert">
+                                {{formErrors.lastName}}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input  formControlName="password" type="password" class="form-control" required>
+                            <div *ngIf="formErrors.password" class="alert alert-danger mt-2" role="alert">
+                                {{formErrors.password}}
+                            </div>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button [disabled]="signupForm.invalid"
+                                class="btn btn-primary btn-block" type="submit">SIGN UP</button>
+                        </div>
+                        <div class="mb-2 text-center">
+                            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                                {{errorMessage}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

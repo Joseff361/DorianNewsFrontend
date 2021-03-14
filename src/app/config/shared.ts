@@ -4,6 +4,9 @@ export const apiInfo = {
 }
 export const categories = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology']
 
+export const backendURL = 'http://localhost:8080/api/news';
+
+export const backendURLAuth = 'http://localhost:8080/auth/';
 
 export const countries = [
     {code: 'ae', name: 'United Arab Emirates'},
