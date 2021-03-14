@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SignUp } from '../../config/SignUp';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -118,6 +119,12 @@ export class SignupComponent implements OnInit {
         
         this.signupFormDirective.resetForm(); //ensure a completely reset
 
+        Swal.fire({
+          title: 'Registered  successfully',
+          icon: 'success',
+          confirmButtonText: 'Sign In'
+        })
+
         this.route.navigate(['/login']);
 
       }, err => {
@@ -126,8 +133,6 @@ export class SignupComponent implements OnInit {
           this.errorMessage = null;
        }, 3000);
       })
-
-    
     
   }
 }

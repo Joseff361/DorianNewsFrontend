@@ -19,6 +19,7 @@
                   <p class="card-title truncate-title">{{new.title}}</p>
                   <p *ngIf="new.description" class="card-text truncate-content">{{new.description}}</p>
                   <p *ngIf="!new.description" class="card-text truncate-content">{{new.title}}</p>
+                  <a [href]="new.url" target="_blank" class="btn btn-white mt-2">Read new</a> &nbsp;
                   <a  class="btn btn-danger mt-2" (click)="delete($event.target.value, new.id)" >Delete new</a>
                 </div>
                 <div class="card-footer">

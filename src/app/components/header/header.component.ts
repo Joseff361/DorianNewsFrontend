@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../services/message.service';
 import { TokenService } from '../../services/token.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-header',
@@ -39,6 +41,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.messages = [];
       }
     });
+
+    if(this.tokenService.getToken() != null){
+        this.customerName = this.tokenService.getUserName();
+        this.v_signup = "none";
+        this.v_login = "none";
+        this.v_logout = "";
+        this.v_user = "";
+    }
+
   }
 
   ngOnDestroy() {
@@ -54,5 +65,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.v_logout = "none";
     this.v_user = "none";
     this.customerName = "";
+    Swal.fire({
+      title: 'See ya!',
+      icon: 'success',
+    })
   }
 }

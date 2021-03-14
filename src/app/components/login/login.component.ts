@@ -6,7 +6,7 @@ import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
 import { JwtCredentials } from 'src/app/config/JwtCredentials';
 import { MessageService } from '../../services/message.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -105,6 +105,12 @@ export class LoginComponent implements OnInit {
         this.saveCredentials(credentials);
 
         this.messageService.sendMessage(this.tokenService.getUserName());
+
+        Swal.fire({
+          title: 'Logged successfully',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
 
         this.route.navigate(['/home']);
         //console.log(credentials)

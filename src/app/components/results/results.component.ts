@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NewsApiService } from '../../services/news-api.service';
 import { SpringApiService } from '../../services/spring-api.service';
 import { News } from '../../config/News';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -80,7 +81,20 @@ export class ResultsComponent implements OnInit {
 
     //console.log(this.theNew);
     this.springApiService.saveNew(this.theNew)
-      .subscribe(response => console.log("Registro exitoso"), err => console.log(err));
+      .subscribe(response => {
+        Swal.fire({
+          title: 'New saved successfully',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      }, err => {
+        Swal.fire({
+          title: 'You have to be logged to save news',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        })
+        console.log(err);
+      });
   }
 
 }
