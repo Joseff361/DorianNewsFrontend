@@ -23,7 +23,7 @@ export class AuthService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post<JwtCredentials>(backendURLAuth + 'login', loginUser, httpOptions);
+    return this.http.post<JwtCredentials>(backendURLAuth + '/login', loginUser, httpOptions);
   }
 
   public register(signupUser: SignUp): Observable<any> {
@@ -32,6 +32,6 @@ export class AuthService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.post<any>(backendURLAuth + 'signin', signupUser, httpOptions);
+    return this.http.post<any>(backendURLAuth + '/signin', signupUser, httpOptions);
   }
 }

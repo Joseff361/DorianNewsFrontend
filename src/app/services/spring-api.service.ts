@@ -11,6 +11,8 @@ import { TokenService } from '../services/token.service';
 })
 export class SpringApiService {
 
+  theCleanNew: News;
+
   constructor(
     private http: HttpClient,
     private tokenService: TokenService
@@ -27,6 +29,11 @@ export class SpringApiService {
   }
 
   saveNew(theNew: News): Observable<News>{
+
+    this.theCleanNew = this.cleanString(theNew);
+
+    console.log(this.theCleanNew);
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=UTF-8',
@@ -34,7 +41,7 @@ export class SpringApiService {
       })
     };
 
-    return this.http.post<News>(backendURL,theNew, httpOptions);
+    return this.http.post<News>(backendURL,this.theCleanNew, httpOptions);
   }
 
   deleteNew(theId: number): Observable<any>{
@@ -46,6 +53,16 @@ export class SpringApiService {
     };
 
     return this.http.delete(backendURL + "/" + theId, httpOptions);
+  }
+
+  cleanString(theNew: News): News{
+
+    for (let key of Object.keys(theNew)){ 
+      if(theNew[key] != null && typeof theNew[key] == 'string'){
+        theNew[key] = theNew[key].normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+      }  
+    }
+    return theNew;
   }
 
 }

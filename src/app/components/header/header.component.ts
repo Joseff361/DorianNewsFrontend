@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     //subscribe to home component messages
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {

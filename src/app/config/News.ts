@@ -1,12 +1,12 @@
 export class News{
 	
-	constructor(private id: Number,
-				private sourceName: String,
-				private author: String,
-				private title: String,
-				private description: String,
-				private url:String,
-				private urlToImage: String,
-				private publishedAt: Date,
-				private content: String){}
+	constructor(public id: Number,
+				public sourceName: String,
+				public author: String,
+				public title: String,
+				public description: String,
+				public url:String,
+				public urlToImage: String,
+				public publishedAt: Date,
+				public content: String){}
 }

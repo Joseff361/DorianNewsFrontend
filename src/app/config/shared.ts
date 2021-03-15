@@ -1,12 +1,12 @@
 export const apiInfo = {
     prefixURL: 'https://newsapi.org/v2/',
-    suffiURL: '&apiKey=49fd11f852f44899b123415a6226b0b3'
+    suffiURL: '&apiKey=2072dc9cd1394f94b38791be5dcd2702'
 }
 export const categories = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology']
 
-export const backendURL = 'http://localhost:8080/api/news';
+export const backendURL = window["cfgApiBaseUrl"] + '/api/news';
 
-export const backendURLAuth = 'http://localhost:8080/auth/';
+export const backendURLAuth = window["cfgApiBaseUrl"] + "/auth";
 
 export const countries = [
     {code: 'ae', name: 'United Arab Emirates'},
