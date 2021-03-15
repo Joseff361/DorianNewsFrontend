@@ -14,7 +14,8 @@
     <div class="col-md-4" *ngFor="let new of resultList.articles">
         <div class="card mt-3">
             <div class="card-header ">{{new.source.name}}</div>
-            <img *ngIf="new.urlToImage" height="175" [src]="new.urlToImage" alt="News image" >
+            <img *ngIf="new.urlToImage" height="175" [src]="new.urlToImage" alt="News image" 
+                onerror="this.onerror=null;this.src='../../../assets/images/404.png';">
             <img *ngIf="!new.urlToImage" height="175" src="../../../assets/images/404.png" alt="News image" >
             <div class="card-body">
               <p class="card-title truncate-title">{{new.title}}</p>
