@@ -45,6 +45,7 @@ export class ResultsComponent implements OnInit {
           this.visible = false;
         }, err => {
           this.newsapi_d = true;
+          this.visible = false;
         });  
     }
 
@@ -56,6 +57,7 @@ export class ResultsComponent implements OnInit {
           this.visible = false;
         }, err => {
           this.newsapi_d = true;
+          this.visible = false;
         }); 
     }
 
@@ -67,6 +69,7 @@ export class ResultsComponent implements OnInit {
           this.visible = false;
         },err => {
           this.newsapi_d = true;
+          this.visible = false;
         }); 
     }
 
@@ -78,6 +81,7 @@ export class ResultsComponent implements OnInit {
           this.visible = false;
         }, err => {
           this.newsapi_d = true;
+          this.visible = false;
         }); 
     }
   }
