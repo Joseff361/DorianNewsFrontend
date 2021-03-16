@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   signupFormToSend: SignUp;
   errorMessage: String;
+  visible: boolean = false;
 
   formErrors = {
     'customerName': '',
@@ -104,12 +105,13 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     this.signupFormToSend = this.signupForm.value;
     console.log(this.signupFormToSend);
+    this.visible = true;
 
     this.authService.register(this.signupFormToSend)
       .subscribe(success => {
 
         console.log(success)
-
+        this.visible = false;
         this.signupForm.reset({
           customerName: '',
           password: '',
@@ -128,6 +130,7 @@ export class SignupComponent implements OnInit {
         this.route.navigate(['/login']);
 
       }, err => {
+        this.visible = false;
         this.errorMessage = "Costumer Name already exists";
         setTimeout (() => {
           this.errorMessage = null;

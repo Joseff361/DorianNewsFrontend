@@ -17,6 +17,7 @@ export class ResultsComponent implements OnInit {
   @Input() keyword: String = '';
   
   visible: boolean = false;
+  newsapi_d: boolean = false;
   theNew: News;
 
 
@@ -34,12 +35,16 @@ export class ResultsComponent implements OnInit {
   // UPDATE THE LIST OF NEWS
   ngOnChanges(){
 
+    this.newsapi_d = false;
+
     if(this.category != 'none' && this.category != undefined && this.country != 'none' && this.country != undefined){
       this.visible = true;
       this.newsApiService.getTopHeadlinesByCountryANDCategory(this.country, this.category)
         .subscribe(result => {
           this.resultList = result;
           this.visible = false;
+        }, err => {
+          this.newsapi_d = true;
         });  
     }
 
@@ -49,6 +54,8 @@ export class ResultsComponent implements OnInit {
         .subscribe(result => {
           this.resultList = result;
           this.visible = false;
+        }, err => {
+          this.newsapi_d = true;
         }); 
     }
 
@@ -58,6 +65,8 @@ export class ResultsComponent implements OnInit {
         .subscribe(result => {
           this.resultList = result;
           this.visible = false;
+        },err => {
+          this.newsapi_d = true;
         }); 
     }
 
@@ -67,6 +76,8 @@ export class ResultsComponent implements OnInit {
         .subscribe(result => {
           this.resultList = result;
           this.visible = false;
+        }, err => {
+          this.newsapi_d = true;
         }); 
     }
   }

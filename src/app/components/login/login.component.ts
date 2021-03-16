@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   login: Login;
   errorMessage: String;
+  visible: boolean = false;
 
   formErrors = {
     'customerName': '',
@@ -90,10 +91,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.login = this.loginForm.value;
-    //console.log(this.login);
+    this.visible = true;
 
     this.authService.login(this.login)
       .subscribe(credentials => {
+
+        this.visible = false;
 
         this.loginForm.reset({
           username: '',
@@ -116,6 +119,7 @@ export class LoginComponent implements OnInit {
         //console.log(credentials)
 
       }, err => {
+        this.visible = false;
         this.errorMessage = "User not found in the BBDD";
         setTimeout (() => {
           this.errorMessage = null;
